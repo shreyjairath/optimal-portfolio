@@ -8,43 +8,18 @@
       <th>lowIncomeVarianceScore</th>
       <th>lowHeadacheScore</th>
       <th>liquidityScore</th>
-      <th>overallScore</th>
+      <th>std_score</th>
+      <th>scaled_score</th>
     </tr>
   </thead>
   <tbody>
-    {{#each portfolios as |p|}}
-      <tr>
-        <td>
-          {{p.investmentsStr}}
-        </td>
-        <td>
-          {{p.annualIncome}}
-        </td>
-        <td>
-          {{p.annualGrowth}}
-        </td>
-        <td>
-          {{p.lowGrowthVarianceScore}}
-        </td>
-        <td>
-          {{p.lowIncomeVarianceScore}}
-        </td>
-        <td>
-          {{p.lowHeadacheScore}}
-        </td>
-        <td>
-          {{p.liquidityScore}}
-        </td>
-        <td>
-          {{p.overallScore}}
-        </td>
-      </tr>
-    {{/each}}
   </tbody>
 </table>
 
 <script>
-  $(document).ready( function () {
-    $('table').DataTable();
+  $(document).ready(function() {
+    $('table').DataTable({
+      "ajax": '/get-scored-ports',
+    });
   });
 </script>
